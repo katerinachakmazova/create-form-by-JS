@@ -1,5 +1,5 @@
 'use strict'
-
+// create page
 const form = document.createElement('form');
 form.setAttribute('class', 'form-container flex-form-container')
 document.body.appendChild(form);
@@ -61,3 +61,17 @@ buttonCancel.setAttribute('id', 'cancel');
 buttonCancel.textContent = 'Cancel';
 buttonContainer.append(buttonConfirm, buttonCancel)
 
+// add events
+const span = document.createElement('span');
+span.setAttribute('hidden', true);
+form.insertBefore(span, buttonContainer);
+span.textContent = 'Email is incorrect';
+const checkEmail = /^[^\.]\S+(\S(?!\.{2,}))*[^.]@\w{1}[\w-.]{0,62}[^-.]$/
+inputs[3].addEventListener('change', (event) => {
+if(!checkEmail.test(event.target.value)){
+  span.removeAttribute('hidden');
+}
+else {
+  span.setAttribute('hidden', true);
+}
+})
