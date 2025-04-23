@@ -30,23 +30,23 @@ textField.setAttribute('type', 'text');
 textInputColumnContainerEl1.appendChild(textField);
 
 const textInputColumnContainerEl2 = textInputColumnContainerEl1.cloneNode(true);
+const textInputColumnContainerEl3 = textInputColumnContainerEl1.cloneNode(true);
 
-textInputColumnContainer1.append(textInputColumnContainerEl1, textInputColumnContainerEl2);
+textInputColumnContainer1.append(textInputColumnContainerEl1, textInputColumnContainerEl2, textInputColumnContainerEl3);
 
 const textInputColumnContainer2 = textInputColumnContainer1.cloneNode(true);
 textInputContainer.append(textInputColumnContainer1, textInputColumnContainer2);
 
 const inputs = document.querySelectorAll('input');
 inputs[0].setAttribute('placeholder', 'First Name')
-inputs[0].setAttribute('required', 'true')
 inputs[1].setAttribute('placeholder', 'Nick Name')
-inputs[2].setAttribute('placeholder', 'Last Name')
-inputs[3].setAttribute('placeholder', 'Email Address')
-inputs[3].setAttribute('type', 'email')
-inputs[3].setAttribute('required', 'true')
-
-
-
+inputs[2].setAttribute('placeholder', 'Password')
+inputs[2].setAttribute('type', 'password')
+inputs[3].setAttribute('placeholder', 'Last Name')
+inputs[4].setAttribute('placeholder', 'Email Address')
+inputs[4].setAttribute('type', 'email')
+inputs[5].setAttribute('placeholder', 'Password Confirmation')
+inputs[5].setAttribute('type', 'password')
 
 const buttonContainer = document.createElement('div');
 buttonContainer.setAttribute('class', 'button-container flex-button-container')
@@ -61,3 +61,22 @@ buttonCancel.setAttribute('id', 'cancel');
 buttonCancel.textContent = 'Cancel';
 buttonContainer.append(buttonConfirm, buttonCancel)
 
+
+const span = document.createElement('span');
+span.textContent = 'Passwords don\'t match';
+form.insertBefore(span, buttonContainer);
+span.setAttribute('hidden', true)
+
+function validatePasswords(event) {
+  let password = inputs[2].value;
+  let passwordConfirm = inputs[5].value;
+  if(password!==passwordConfirm){
+    span.removeAttribute('hidden')
+  }
+  else{
+    span.setAttribute('hidden', true)
+  }
+}
+
+inputs[5].addEventListener('input', validatePasswords)
+inputs[2].addEventListener('change', validatePasswords)
