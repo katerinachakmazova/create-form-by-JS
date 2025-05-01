@@ -39,12 +39,10 @@ textInputContainer.append(textInputColumnContainer1, textInputColumnContainer2);
 
 const inputs = document.querySelectorAll('input');
 inputs[0].setAttribute('placeholder', 'First Name')
-inputs[0].setAttribute('required', 'true')
 inputs[1].setAttribute('placeholder', 'Nick Name')
 inputs[2].setAttribute('placeholder', 'Last Name')
 inputs[3].setAttribute('placeholder', 'Email Address')
 inputs[3].setAttribute('type', 'email')
-inputs[3].setAttribute('required', 'true')
 
 
 
