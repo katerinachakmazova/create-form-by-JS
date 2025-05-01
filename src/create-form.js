@@ -1,4 +1,5 @@
 'use strict'
+import { Person } from "./person.js";
 
 const form = document.createElement('form');
 form.setAttribute('class', 'form-container flex-form-container')
@@ -61,3 +62,9 @@ buttonCancel.setAttribute('id', 'cancel');
 buttonCancel.textContent = 'Cancel';
 buttonContainer.append(buttonConfirm, buttonCancel)
 
+buttonConfirm.addEventListener('click', submit)
+
+function submit(event){
+  const user = new Person(inputs[0].value, inputs[2].value, inputs[1].value, inputs[3].value);
+  localStorage.setItem(user.lName, JSON.stringify(user));
+}
